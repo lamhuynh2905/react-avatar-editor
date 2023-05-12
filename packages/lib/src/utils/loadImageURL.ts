@@ -9,8 +9,9 @@ export const loadImageURL = (imageURL: string, crossOrigin?: string) =>
     const image = new Image()
     image.onload = () => resolve(image)
     image.onerror = reject
-    if (!isDataURL(imageURL) && crossOrigin) {
-      image.crossOrigin = crossOrigin
+    if (!isDataURL(imageURL)) {
+      image.crossOrigin = 'Anonymous'
+      console.log(`IMAGE CROSS ORIGIN ANONYMOUS')
     }
     image.src = imageURL
   })
